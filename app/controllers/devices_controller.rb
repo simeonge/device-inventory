@@ -1,5 +1,6 @@
 class DevicesController < ApplicationController
   before_action :set_device, only: [:show, :edit, :update, :destroy]
+  http_basic_authenticate_with name: "admin", password: "secret", except: :index
 
   # GET /devices
   # GET /devices.json
