@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  code: MyString
+  holder: MyString
+  timein: 2015-03-09 18:13:07
+  timeout: 2015-03-09 18:13:07
+
+two:
+  code: MyString
+  holder: MyString
+  timein: 2015-03-09 18:13:07
+  timeout: 2015-03-09 18:13:07

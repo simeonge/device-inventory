@@ -11,12 +11,29 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150308054217) do
+ActiveRecord::Schema.define(version: 20150309231307) do
 
   create_table "devices", force: true do |t|
     t.string   "os"
     t.string   "model"
     t.string   "code"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "histories", force: true do |t|
+    t.string   "code"
+    t.string   "holder"
+    t.datetime "timein"
+    t.datetime "timeout"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "statuses", force: true do |t|
+    t.string   "code"
+    t.string   "holder"
+    t.datetime "time"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
