@@ -9,11 +9,13 @@ Rails.application.routes.draw do
 
   get 'status/checkin'
 
-  post 'status/take'
+  put 'status/take'
+  patch 'status/take'
 
-  post 'status/return'
+  put 'status/return'
+  patch 'status/return'
 
-  resources :status
+  # resource :status
 
     # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

@@ -17,10 +17,10 @@ class StatusController < ApplicationController
   def take
     respond_to do |format|
       if @statu.update(status_params)
-        format.html { redirect_to @statu, notice: 'Device has been checked out.' }
-        format.json { render :show, status: :ok, location: @statu }
+        format.html { redirect_to '/status/index', notice: 'Device has been checked out.' }
+        format.json { render :index, status: :ok, location: @statu }
       else
-        format.html { render :edit }
+        format.html { render :checkout }
         format.json { render json: @statu.errors, status: :unprocessable_entity }
       end
     end
@@ -29,15 +29,15 @@ class StatusController < ApplicationController
   # PUT /status/1
   # update history model
   def return
-    record = History.new(params[:status][:code], params[:status][:holder], @statu.time, params[:status][:time])
+    record = History.new(code: params[:status][:code], holder: params[:status][:holder], timeout: @statu.time, timein: params[:status][:time])
 
     respond_to do |format|
       Status.transaction do
-        if @statu.update(status_params) && record.save
-          format.html { redirect_to @statu, notice: 'Device has been returned.' }
+        if @statu.update(holder: "", time: "") && record.save
+          format.html { redirect_to '/status/index', notice: 'Device has been returned.' }
           format.json { render :show, status: :ok, location: @statu }
         else
-          format.html { render :edit }
+          format.html { render :checkout }
           format.json { render json: @statu.errors, status: :unprocessable_entity }
         end
       end
@@ -46,7 +46,7 @@ class StatusController < ApplicationController
 
   private
     def set_status
-      @statu = Status.find_by(code: params[:code])
+      @statu = Status.find_by(code: params[:code]) || Status.find_by(code: params[:status][:code])
     end
 
     def status_params

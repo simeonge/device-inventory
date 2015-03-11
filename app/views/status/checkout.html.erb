@@ -1,5 +1,19 @@
 <h1>Checking out device</h1>
 
-<%= render 'form' %>
+<%= form_for(@statu, url: {action: "take"}) do |f| %>
+
+  <div class="field">
+    <%= f.label 'Name' %><br>
+    <%= f.text_field :holder, required: true %>
+  </div>
+  <div class="field">
+    <%= f.label :time %><br>
+    <%= f.text_field :time, required: true%>
+  </div>
+  <%= f.hidden_field :code, :value => @statu.code %>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>
 
 <%= link_to 'Back', '/status/index' %>
