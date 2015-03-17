@@ -1,10 +1,11 @@
+<div class="container">
 <h1>Returning device <%= @statu.code %></h1>
 
 <%= form_for(@statu, url: {action: "return"}) do |f| %>
 
   <div class="field">
     <%= f.label 'Name' %><br>
-    <%= f.text_field :holder, required: true %>
+    <%= f.text_field :holder, readonly: true %>
   </div>
   <div class="field">
     <%= f.label :time %><br>
@@ -18,3 +19,4 @@
 
 
 <%= link_to 'Back', '/status/index' %>
+</div>

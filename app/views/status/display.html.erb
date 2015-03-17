@@ -8,9 +8,7 @@
       <th>Model</th>
       <th>Code</th>
       <th>Available?</th>
-      <th>Holder</th>
-      <th>Time</th>
-      <th colspan="6"></th>
+      <th colspan="4"></th>
     </tr>
   </thead>
 
@@ -21,10 +19,6 @@
         <td><%= device.model %></td>
         <td><%= device.code %></td>
 	<td><%= device.available%></td>
-	<td><%= device.holder %></td>
-	<td><%= device.time %></td>
-        <td><%= link_to 'Check out', {controller: "status", action: "checkout", code: device.code} %></td>
-        <td><%= link_to 'Check in', {controller: "status", action: "checkin", code: device.code} %></td>
       </tr>
     <% end %>
   </tbody>

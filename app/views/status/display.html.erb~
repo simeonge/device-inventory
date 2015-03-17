@@ -8,9 +8,7 @@
       <th>Model</th>
       <th>Code</th>
       <th>Available?</th>
-      <th>Holder</th>
-      <th>Time</th>
-      <th colspan="6"></th>
+      <th colspan="4"></th>
     </tr>
   </thead>
 

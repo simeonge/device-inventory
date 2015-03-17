@@ -8,7 +8,33 @@
 </head>
 <body>
 
+<div class="container">
+  <nav class="navbar navbar-default navbar-static-top">
+    <div class="container">
+      <div class="navbar-header">
+        <a class="navbar-brand" href="/">Device Inventory</a>
+	<ul class="nav navbar-nav navbar-right">
+	  <li><a href="/status/index" target="_blank">Check out</a></li>
+	</ul>
+      </div>
+    </div>
+  </nav>
+</div>
+
 <%= yield %>
+
+<hr />
+
+<footer class="footer">
+  <div class="container">
+    <ul class="nav navbar-nav navbar-left">
+      <li id="admn"><a>Admin links:</a></li>
+      <li><a href="/status/index" target="_blank">Check out</a></li>
+      <li><a href="/devices" target="_blank">Devices</a></li>
+      <li><a href="/history/index" target="_blank">History</a></li>
+    </ul>
+  </div>
+</footer>
 
 </body>
 </html>

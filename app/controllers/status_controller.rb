@@ -1,5 +1,10 @@
 class StatusController < ApplicationController
   before_action :set_status, only: [:checkin, :checkout, :take, :return]
+  http_basic_authenticate_with name: "admin", password: "secret", except: :display
+
+  def display
+    @statuses = Status.joins('LEFT OUTER JOIN devices ON devices.code = statuses.code').select("statuses.available, devices.*")
+  end
 
   def index
     @statuses = Status.joins('LEFT OUTER JOIN devices ON devices.code = statuses.code').select("statuses.*, devices.*")
@@ -16,7 +21,7 @@ class StatusController < ApplicationController
   # PUT /status/1
   def take
     respond_to do |format|
-      if @statu.update(status_params)
+      if @statu.update(status_params, available: false)
         format.html { redirect_to '/status/index', notice: 'Device has been checked out.' }
         format.json { render :index, status: :ok, location: @statu }
       else
@@ -33,7 +38,7 @@ class StatusController < ApplicationController
 
     respond_to do |format|
       Status.transaction do
-        if @statu.update(holder: "", time: "") && record.save
+        if @statu.update(holder: "", time: "", available: true) && record.save
           format.html { redirect_to '/status/index', notice: 'Device has been returned.' }
           format.json { render :show, status: :ok, location: @statu }
         else
