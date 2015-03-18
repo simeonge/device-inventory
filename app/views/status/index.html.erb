@@ -23,8 +23,13 @@
 	<td><%= device.available%></td>
 	<td><%= device.holder %></td>
 	<td><%= device.time %></td>
-        <td><%= link_to 'Check out', {controller: "status", action: "checkout", code: device.code} %></td>
-        <td><%= link_to 'Check in', {controller: "status", action: "checkin", code: device.code} %></td>
+	<td>
+	  <% if device.available %>
+            <%= link_to 'Check out', {controller: "status", action: "checkout", code: device.code} %>
+	  <% else %>
+            <%= link_to 'Check in', {controller: "status", action: "checkin", code: device.code} %>
+	  <% end %>
+	</td>
       </tr>
     <% end %>
   </tbody>

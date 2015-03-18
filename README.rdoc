@@ -1,28 +1,19 @@
-== README
+== Device Inventory
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+Ruby on Rails application
 
-Things you may want to cover:
+Stack:
 
-* Ruby version
+* Bootstrap
+* Ruby 2.1.2
+* Rails 4.1.1
 
-* System dependencies
+Guest features:
 
-* Configuration
+* View the list of devices and the status of each device.
 
-* Database creation
+Admin features:
 
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
-
-
-Please feel free to use a different markup language if you do not plan to run
-<tt>rake doc:app</tt>.
+* Check out/check in device.
+* Add, edit, and delete devices.
+* View history of device checkouts.

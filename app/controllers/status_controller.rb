@@ -21,7 +21,7 @@ class StatusController < ApplicationController
   # PUT /status/1
   def take
     respond_to do |format|
-      if @statu.update(status_params, available: false)
+      if @statu.update(holder: params[:status][:holder], time: params[:status][:time], available: false)
         format.html { redirect_to '/status/index', notice: 'Device has been checked out.' }
         format.json { render :index, status: :ok, location: @statu }
       else
